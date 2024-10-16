@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MangaDex</title>
+
+  <link rel="stylesheet" href="./bootstrap/5.3.3/bootstrap.min.css">
+  <script src="./bootstrap/5.3.3/bootstrap.bundle.min.js"></script>
+
+  <script src="./jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+<body data-bs-theme="dark">
+  <div class="container mt-3">
+    <h2>Dark Mode fetch downloads</h2>
+    <p>Click on the downloads button to see the effect.</p>
+
+    <div class="row">
+      <div class="col-2 text-center">
+        <input type="button" class="btn btn-primary" id="btn" value="downloads">
+      </div>
+      <div class="col-1"></div>
+      <textarea class="col-9" id="w3review" name="w3review" rows="20" cols="50"></textarea>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(() => {
+      // console.log("ready");
+      $("#btn").click(() => {
+        // console.log("click");
+        $.get("http://localhost:5000/api/manga/chapters/down", function (data, status) {
+          $("#w3review").text(data);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
