@@ -35,16 +35,21 @@
       // console.log("ready");
       $("#btn").click(() => {
         // console.log("click");
-        $("#btn").val("");
         $("#spinner").addClass("spinner-border")
+        getDown();
+      });
+
+      const getDown = () => {
         $.get("http://localhost:5000/api/manga/chapters/down", function (data, status) {
-          $("#spinner").removeClass("spinner-border");
-          $("#w3review").text(JSON.stringify(data));
-          if (data) {
-            console.log(123);
+          if (data.length) {
+            // $("#spinner").removeClass("spinner-border");
+            $("#w3review").text(JSON.stringify(data));
+            setTimeout(getDown, 1500);
+          } else {
+            $("#spinner").removeClass("spinner-border");
           }
         });
-      });
+      }
     });
   </script>
 </body>
