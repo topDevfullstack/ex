@@ -20,7 +20,10 @@
 
     <div class="row">
       <div class="col-2 text-center">
-        <input type="button" class="btn btn-primary" id="btn" value="downloads">
+        <button type="button" class="btn btn-primary w-100" id="btn">
+          <div id="spinner"></div>
+          downloads
+        </button>
       </div>
       <div class="col-1"></div>
       <textarea class="col-9" id="w3review" name="w3review" rows="20" cols="50"></textarea>
@@ -32,8 +35,14 @@
       // console.log("ready");
       $("#btn").click(() => {
         // console.log("click");
+        $("#btn").val("");
+        $("#spinner").addClass("spinner-border")
         $.get("http://localhost:5000/api/manga/chapters/down", function (data, status) {
-          $("#w3review").text(data);
+          $("#spinner").removeClass("spinner-border");
+          $("#w3review").text(JSON.stringify(data));
+          if (data) {
+            console.log(123);
+          }
         });
       });
     });
