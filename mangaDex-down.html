@@ -63,7 +63,7 @@
       $("#btn-chapter").click(() => {
         // console.log("click");
         $("#spinner-chapter").addClass("spinner-border")
-        $.get("http://localhost:5000/api/manga/chapters/down", function (data, status) {
+        $.get("http://localhost:5000/api/manga/chapters", function (data, status) {
           if (data.length) {
             // $("#spinner").removeClass("spinner-border");
             $("#w3review").text(JSON.stringify(data));
@@ -75,7 +75,7 @@
       });
 
       const getDown = () => {
-        $.get("http://localhost:5000/api/manga/chapters", function (data, status) {
+        $.get("http://localhost:5000/api/manga/chapters/down", function (data, status) {
           if (data.length) {
             // $("#spinner").removeClass("spinner-border");
             $("#w3review").text(JSON.stringify(data));
