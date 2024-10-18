@@ -51,12 +51,12 @@
         // console.log("click");
         $("#spinner-manga").addClass("spinner-border")
         $.get("http://localhost:5000/api/manga?limit=100", function (data, status) {
-          if (data.length) {
-            // $("#spinner").removeClass("spinner-border");
-            $("#w3review").text(JSON.stringify(data));
-            // setTimeout(getDown, 1500);
-            $("#spinner-manga").removeClass("spinner-border");
-          }
+          // if (data.length) {
+          // $("#spinner").removeClass("spinner-border");
+          $("#w3review").text(JSON.stringify(data));
+          // setTimeout(getDown, 1500);
+          $("#spinner-manga").removeClass("spinner-border");
+          // }
         });
       });
 
