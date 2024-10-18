@@ -63,15 +63,7 @@
       $("#btn-chapter").click(() => {
         // console.log("click");
         $("#spinner-chapter").addClass("spinner-border")
-        $.get("http://localhost:5000/api/manga/chapters", function (data, status) {
-          if (data.length) {
-            // $("#spinner").removeClass("spinner-border");
-            $("#w3review").text(JSON.stringify(data));
-            setTimeout(getDown, 1500);
-          } else {
-            $("#spinner-chapter").removeClass("spinner-border");
-          }
-        });
+        getChapter();
       });
 
       const getDown = () => {
@@ -82,6 +74,18 @@
             setTimeout(getDown, 1500);
           } else {
             $("#spinner").removeClass("spinner-border");
+          }
+        });
+      }
+
+      const getChapter = () => {
+        $.get("http://localhost:5000/api/manga/chapters", function (data, status) {
+          if (data.length) {
+            // $("#spinner").removeClass("spinner-border");
+            $("#w3review").text(JSON.stringify(data));
+            setTimeout(getChapter, 1500);
+          } else {
+            $("#spinner-chapter").removeClass("spinner-border");
           }
         });
       }
