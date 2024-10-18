@@ -20,6 +20,14 @@
 
     <div class="row">
       <div class="col-2 text-center">
+        <button type="button" class="btn btn-primary w-100 mb-3" id="btn-manga">
+          <div id="spinner-manga"></div>
+          mangas
+        </button>
+        <button type="button" class="btn btn-primary w-100 mb-3" id="btn-chapter">
+          <div id="spinner-chapter"></div>
+          chapters
+        </button>
         <button type="button" class="btn btn-primary w-100" id="btn">
           <div id="spinner"></div>
           downloads
@@ -39,8 +47,35 @@
         getDown();
       });
 
-      const getDown = () => {
+      $("#btn-manga").click(() => {
+        // console.log("click");
+        $("#spinner-manga").addClass("spinner-border")
+        $.get("http://localhost:5000/api/manga?limit=100", function (data, status) {
+          if (data.length) {
+            // $("#spinner").removeClass("spinner-border");
+            $("#w3review").text(JSON.stringify(data));
+            // setTimeout(getDown, 1500);
+            $("#spinner-manga").removeClass("spinner-border");
+          }
+        });
+      });
+
+      $("#btn-chapter").click(() => {
+        // console.log("click");
+        $("#spinner-chapter").addClass("spinner-border")
         $.get("http://localhost:5000/api/manga/chapters/down", function (data, status) {
+          if (data.length) {
+            // $("#spinner").removeClass("spinner-border");
+            $("#w3review").text(JSON.stringify(data));
+            setTimeout(getDown, 1500);
+          } else {
+            $("#spinner-manga").removeClass("spinner-border");
+          }
+        });
+      });
+
+      const getDown = () => {
+        $.get("http://localhost:5000/api/manga/chapters", function (data, status) {
           if (data.length) {
             // $("#spinner").removeClass("spinner-border");
             $("#w3review").text(JSON.stringify(data));
