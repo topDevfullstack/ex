@@ -108,27 +108,27 @@ function sendSMSAPP($identifier, $filter, $number, $message)
         foreach ($filters as $value) {
           if (strpos($number, $value) !== false) {
             $q = "INSERT INTO `gs_sms_gateway_app`( `dt_sms`,
-                                                                                                `identifier`,
-                                                                                                `number`,
-                                                                                                `message`
-                                                                                                ) VALUES (
-                                                                                                '" . $dt_sms . "',
-                                                                                                '" . $identifier . "',
-                                                                                                '" . $number . "',
-                                                                                                '" . mysqli_real_escape_string($ms, $message) . "')";
+                                                    `identifier`,
+                                                    `number`,
+                                                    `message`
+                                                    ) VALUES (
+                                                    '" . $dt_sms . "',
+                                                    '" . $identifier . "',
+                                                    '" . $number . "',
+                                                    '" . mysqli_real_escape_string($ms, $message) . "')";
             $r = mysqli_query($ms, $q);
           }
         }
       } else {
         $q = "INSERT INTO `gs_sms_gateway_app`( `dt_sms`,
-                                                                                `identifier`,
-                                                                                `number`,
-                                                                                `message`
-                                                                                ) VALUES (
-                                                                                '" . $dt_sms . "',
-                                                                                '" . $identifier . "',
-                                                                                '" . $number . "',
-                                                                                '" . mysqli_real_escape_string($ms, $message) . "')";
+                                                `identifier`,
+                                                `number`,
+                                                `message`
+                                                ) VALUES (
+                                                '" . $dt_sms . "',
+                                                '" . $identifier . "',
+                                                '" . $number . "',
+                                                '" . mysqli_real_escape_string($ms, $message) . "')";
         $r = mysqli_query($ms, $q);
       }
     }
